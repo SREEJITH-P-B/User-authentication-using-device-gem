@@ -1,24 +1,4 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+References
+https://medium.com/@aaronenser/gem-devise-with-custom-parameters-b415d47c9a10
+https://stackoverflow.com/questions/34456366/undefined-method-email-for-nilnilclass-link-user-email
+https://github.com/RailsApps/rails-devise-pundit/issues/33
