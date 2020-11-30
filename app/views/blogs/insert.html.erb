@@ -10,7 +10,7 @@
     <%= f.number_field :product_price %>
   </p>
 
-  <%= f.collection_select :category_id,Category.order(:category_name),:id,:category_name,include_blank:true %>
+  <%= f.collection_select :category_id,Category.order(:category_name),:id,:category_name,{},{ :multiple => true, :size => 5 } %>
 
    <p>
     <%= f.submit %>
