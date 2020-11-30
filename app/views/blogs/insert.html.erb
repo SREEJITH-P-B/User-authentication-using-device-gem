@@ -1,0 +1,19 @@
+<h1>hello</h1>
+<%= form_with(model: @product,url: blogs_create_path, local: true) do |f| %>
+  <p>  
+    <%= f.text_field :product_name %>
+  </p>
+
+ 
+  <p>
+  
+    <%= f.number_field :product_price %>
+  </p>
+
+  <%= f.collection_select :category_id,Category.order(:category_name),:id,:category_name,include_blank:true %>
+
+   <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

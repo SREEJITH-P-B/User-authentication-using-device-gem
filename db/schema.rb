@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_100240) do
+ActiveRecord::Schema.define(version: 2020_11_29_225411) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,40 @@ ActiveRecord::Schema.define(version: 2020_11_28_100240) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories_products", id: false, force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "category_id"
+    t.index ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_name"
+    t.integer "product_price"
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
+  end
+
+  create_table "sellers", force: :cascade do |t|
+    t.string "seller_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_11_28_100240) do
     t.string "first_name"
     t.string "last_name"
     t.integer "age", default: 0
+    t.string "provider", limit: 50, default: "", null: false
+    t.string "uid", limit: 500, default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
