@@ -10,10 +10,13 @@
     <%= f.number_field :product_price %>
   </p>
 
-  <%= f.collection_select :category_id,@category_list,:id,:category_name,{},{ :multiple => true, :size => 5 } %>
+  <%= f.grouped_collection_select(:subcategory_id,@category_list,:subcategories,:category_name,:id,:subcat_name,{}, { :multiple => true, :size => 5,:class=>'chzn-select' })%>
 
    <p>
     <%= f.submit %>
   </p>
  
 <% end %>
+
+<%= javascript_pack_tag 'choosen'%>
+

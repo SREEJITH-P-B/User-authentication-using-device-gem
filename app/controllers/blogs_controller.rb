@@ -11,16 +11,18 @@ class BlogsController < ApplicationController
 	def create
 		if !params[:product].nil?
 			@product = Product.new()
-			@product.product_name= product_params[:product_name]
+=begin			@product.product_name= product_params[:product_name]
 			@product.product_price=product_params[:product_price]
 			s=Seller.find(1)
 			s.products<<@product
 			@product.save
-			product_params["category_id"].each do |n|
+=end			
+			product_params["subcategory_id"].each do |n|
 				if(n!="")
-					category=Category.find(n)
-					@product.categories<<category
-					category.save
+					subcategory=Subcategory.find(n)
+					#@product.categories<<category
+					#category.save
+					puts(subcategory.subcat_name)
 				end
 			end
 		end
@@ -40,7 +42,7 @@ class BlogsController < ApplicationController
 	end
 private
 def product_params
-	params.require(:product).permit(:product_name, :product_price, category_id:[])
+	params.require(:product).permit(:product_name, :product_price, subcategory_id:[])
 end
 end
 =begin
