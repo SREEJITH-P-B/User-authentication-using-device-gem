@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
 	end
 	def insert
 		@product = Product.new
+		@category_list=Category.order(:category_name)
 	end
 	def create
 		if !params[:product].nil?
